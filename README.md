@@ -49,15 +49,16 @@ If you are using a Mac, it is strongly recommended for you to apply [these perfo
 1. Setup a new project using the Magento 2 compose skeleton:
 
 ```
-mkdir magento2 && cd $_
+mkdir magento2.test && cd $_
 git init
-git remote add origin git@github.com:markoshust/docker-magento.git
+git remote add origin git@github.com:siven76/docker-magento.git
 git fetch origin
 git checkout origin/master -- compose/magento-2
 mv compose/magento-2/* .
 rm -rf compose .git
 git init
 ```
+Please note that the folder name ('magento2.test') will be used for the installation.
 
 2. Download the Magento source code to the `src` folder with: `./bin/download 2.2.2`
 
@@ -67,9 +68,9 @@ git init
 
 5. Start your Docker containers with: `./bin/start`.
 
-6. Run Magento's setup install process with the command: `./bin/setup`. Feel free to edit this file to your liking; at the very least you will probably need to update the `base-url` value to the domain you setup in step 6. Also, be sure to setup [Composer Authentication](https://github.com/markoshust/docker-magento#composer-authentication) before initiating the setup script.
+6. Run Magento's setup install process with the command: `./bin/setup`. Feel free to edit this file to your liking; the `base-url` value will be taken from the folder name. Also, be sure to setup [Composer Authentication](https://github.com/markoshust/docker-magento#composer-authentication) before initiating the setup script.
 
-7. You may now access your site at `http://magento2.test` (or whatever domain you setup).
+7. You may now access your site at `http://magento2.test` (or whatever folder name your project is found in).
 
 ## Setup a New Magento 2 Project in Windows
 
