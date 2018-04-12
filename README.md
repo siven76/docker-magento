@@ -48,6 +48,8 @@ If you are using a Mac, it is strongly recommended for you to apply [these perfo
 
 1. Setup a new project using the Magento 2 compose skeleton:
 
+Please note that the folder name ('magento2.test') will be used as the `base-url` for the installation and for setting up the db.env file.
+
 ```
 mkdir magento2.test && cd $_
 git init
@@ -58,7 +60,6 @@ mv compose/magento-2/* .
 rm -rf compose .git
 git init
 ```
-Please note that the folder name ('magento2.test') will be used for the installation.
 
 2. Download the Magento source code to the `src` folder with: `./bin/download 2.2.2`
 
@@ -66,7 +67,7 @@ Please note that the folder name ('magento2.test') will be used for the installa
 
 4. Add an entry to `/etc/hosts` with your custom domain: `10.254.254.254 magento2.test` (assuming the domain  you want to setup is `magento2.test`). Be sure to use a `.test` tld, as `.localhost` and `.dev` will present issues with domain resolution.
 
-5. Start your Docker containers with: `./bin/start`.
+5. Start your Docker containers with: `./bin/start`. This will create a db.env file on first run, based on the name of your folder (`magento2`) removing the `.test` part of the folder name.
 
 6. Run Magento's setup install process with the command: `./bin/setup`. Feel free to edit this file to your liking; the `base-url` value will be taken from the folder name. Also, be sure to setup [Composer Authentication](https://github.com/markoshust/docker-magento#composer-authentication) before initiating the setup script.
 
