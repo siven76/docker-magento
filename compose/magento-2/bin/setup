@@ -1,23 +1,32 @@
 #!/bin/bash
 ./bin/cli chmod u+x bin/magento
 
+DOMAIN=${PWD##*/}
+DB=$(echo $DOMAIN | cut -f1 -d.)
+
 docker-compose exec phpfpm /usr/local/bin/php ./bin/magento setup:install \
   --db-host=db \
-  --db-name=magento \
-  --db-user=magento \
-  --db-password=magento \
-  --base-url=http://magento2.test/ \
+  --db-name=$DB \
+  --db-user=$DB \
+  --db-password=$DB \
+  --base-url=http://$DOMAIN/ \
   --admin-firstname=Admin \
-  --admin-lastname=User \
-  --admin-email=dummy@gmail.com \
-  --admin-user=magento2 \
-  --admin-password=magento2 \
+  --admin-lastname=MageXtensions \
+  --admin-email=support@magextensions.com.au \
+  --admin-user=admin \
+  --admin-password=sirius76 \
+  --backend-frontname=admin \
   --language=en_US \
   --currency=USD \
   --timezone=America/New_York \
-  --use-rewrites=1
 
 ./bin/fixperms
+
+echo "Installing sample data.."
+./bin/magento sampledata:deploy
+./bin/magento setup:upgrade
+./bin/magento setup:di:compile
+./bin/magento setup:static-content:deploy -f
 
 echo "Turning on developer mode.."
 ./bin/magento deploy:mode:set developer
