@@ -26,7 +26,7 @@ docker-compose exec phpfpm /usr/local/bin/php ./bin/magento setup:install \
 echo "Installing sample data.."
 ./bin/magento sampledata:deploy
 ./bin/magento setup:upgrade
-./bin/magento setup:di:compile
+./bin/compile
 ./bin/magento setup:static-content:deploy -f
 
 echo "Turning on developer mode.."
