@@ -1,6 +1,6 @@
 #!/bin/bash
 ./bin/magento setup:di:compile
-while [ $? eq 127 ]; do
+while [ $? -eq 127 ]; do
   ./bin/cli rm -rf ./var/{cache,page_cache,tmp,view_preprocessed}
   ./bin/cli rm -rf ./generated
   ./bin/magento setup:di:compile
