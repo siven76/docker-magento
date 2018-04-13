@@ -11,10 +11,10 @@ docker-compose exec phpfpm /usr/local/bin/php ./bin/magento setup:install \
   --db-password=$DB \
   --base-url=http://$DOMAIN/ \
   --admin-firstname=Admin \
-  --admin-lastname=MageXtensions \
+  --admin-lastname=Magento \
   --admin-email=support@magextensions.com.au \
   --admin-user=admin \
-  --admin-password=sirius76 \
+  --admin-password=admin \
   --backend-frontname=admin \
   --language=en_US \
   --currency=USD \
