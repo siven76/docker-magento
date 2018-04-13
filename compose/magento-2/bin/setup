@@ -15,6 +15,7 @@ docker-compose exec phpfpm /usr/local/bin/php ./bin/magento setup:install \
   --admin-email=dummy@gmail.com \
   --admin-user=magento2 \
   --admin-password=magento2 \
+  --backend-frontname=admin \
   --language=en_US \
   --currency=USD \
   --timezone=America/New_York \
