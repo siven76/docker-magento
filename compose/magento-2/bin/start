@@ -16,7 +16,7 @@ else
 	echo "Adding domain to /etc/hosts.."
 	LINE="10.254.254.254	$DOMAIN"
 	HOSTS="/etc/hosts"
-	grep -qF -- "$LINE" "$HOSTS" || echo "$LINE" | sudo tee --append "$HOSTS"
+	grep -qF -- "$LINE" "$HOSTS" || echo "$LINE" | sudo tee -a "$HOSTS"
 	
 	echo "Starting up docker as deamon"
 fi
